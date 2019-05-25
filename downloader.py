@@ -18,7 +18,8 @@ for region in ftp.nlst():
     except:
         pass
 
-    already_downloaded_files = glob.glob(region_path + '/*.zip')
+    already_downloaded_files = glob.glob(region_path + '/*')
+    already_downloaded_files = [item + '.zip' for item in already_downloaded_files if item[-3:] != 'zip']
 
     for file in ftp.nlst():
         file_to_download = os.path.join(region_path, file)
@@ -27,4 +28,4 @@ for region in ftp.nlst():
 
         with open(file_to_download, 'wb') as f:
             ftp.retrbinary('RETR ' + file, f.write)
-        print('file', file, 'was downloaded at', dt.now())#.replace(microsecond=0))
+        print('file', file, 'was downloaded at', dt.now())
