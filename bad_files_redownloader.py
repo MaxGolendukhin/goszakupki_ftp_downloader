@@ -19,3 +19,7 @@ for region_path in glob.glob(path + '/*'):
             print('file', file, 'was downloaded at', dt.now())
 
         os.remove(bad_file_path)
+
+    bad_files_directory = os.path.join(region_path, 'unzipped_files')
+    if len(glob.glob(bad_files_directory + '/*')) == 0:
+        os.remove(bad_files_directory)
