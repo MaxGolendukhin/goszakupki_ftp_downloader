@@ -49,5 +49,6 @@ for file in files:
             os.makedirs(corrupted_files_folder)
         os.rename(file_to_download, os.path.join(corrupted_files_folder, os.path.basename(file_to_download)))
 
+
     processed_files += 1
     print('Processed {:04.2f}%'.format(100.0 * processed_files / files_to_process))
